@@ -4,4 +4,4 @@
 Rapport 4/5 pages
 
 - Conception (diagramme classe minimum)
-- Solution conceptuelle (diagramme d'activité, métaheuristiques)
+- Solution conceptuelle (diagramme d'activité, métaheuristiques...)
