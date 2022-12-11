@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './core/components/pageNotFound/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -9,7 +10,7 @@ const routes: Routes = [
       import('./features/home/home.module').then((m) => m.HomeModule),
   },
 
-  { path: '**', redirectTo: 'home' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
