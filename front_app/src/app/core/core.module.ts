@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { PageNotFoundComponent } from './components/pageNotFound/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/pageNotFound/page-not-found.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
