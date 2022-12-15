@@ -11,6 +11,10 @@ export class NavBarComponent implements OnInit {
   constructor(private router: Router) {}
 
   logout() {
-    // Code to log the user out goes here
+    //TO DO
+    this.goToLoginPage();
+  }
+  goToLoginPage() {
+    this.router.navigate(['/login']);
   }
 }

@@ -1,6 +1,12 @@
 mat-toolbar {
     justify-content: space-between;
+    background-color: #0494FC;
+}
+mat-menu{
+    background-color: white;
 }
 .logo {
     margin: 0 16px;
 }
+
+

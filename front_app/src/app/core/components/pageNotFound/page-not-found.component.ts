@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
       <mat-card-title>404: Page Not Found</mat-card-title>
       <mat-card-content>
         <p>
-          We're sorry, but the page you were looking for could not be found.
+          We are sorry, but the page you were looking for could not be found.
         </p>
       </mat-card-content>
       <mat-card-actions>
@@ -20,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
     `
       mat-card {
         text-align: center;
+        margin-top: 20px;
+        border: 2px solid #000;
       }
     `,
   ],

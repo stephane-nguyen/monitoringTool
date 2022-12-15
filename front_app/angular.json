@@ -19,7 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/cytech32.png",
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -87,7 +87,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/assets",
-              "src/cytech32.png"
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.css"
