@@ -3,13 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './core/components/pageNotFound/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: 'home',
     loadChildren: () =>
-      import('./features/home/home.module').then((m) => m.HomeModule),
+      import('./features/agenda/agenda.module').then((m) => m.AgendaModule),
   },
 
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./features/user/user.module').then((m) => m.UserModule),
+  },
+
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', component: PageNotFoundComponent },
 ];
 

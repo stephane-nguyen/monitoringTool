@@ -11,20 +11,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from '../shared/shared.module';
+import { AgendaModule } from '../features/agenda/agenda.module';
 
 @NgModule({
   declarations: [NavBarComponent, PageNotFoundComponent],
+  exports: [NavBarComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
     SharedModule,
+    AgendaModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
   ],
-  exports: [NavBarComponent],
 })
 export class CoreModule {}

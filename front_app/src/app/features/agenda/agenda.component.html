@@ -1,0 +1,61 @@
+<div class="d-flex mx-auto">
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle
+      value="today"
+      (click)="setView(CalendarView.Day)"
+      [class.active]="view === CalendarView.Day"
+      style="background-color: #676e7d"
+      value="left"
+      >Today</mat-button-toggle
+    >
+    <mat-button-toggle
+      value="month"
+      (click)="setView(CalendarView.Month)"
+      [class.active]="view === CalendarView.Month"
+      style="background-color: #676e7d"
+      value="center"
+    >
+      Month</mat-button-toggle
+    >
+    <mat-button-toggle
+      value="week"
+      (click)="setView(CalendarView.Week)"
+      [class.active]="view === CalendarView.Week"
+      style="background-color: #676e7d"
+      value="right"
+    >
+      Week</mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</div>
+
+<div
+  *ngIf="isLoading$ | async"
+  class="d-flex align-items-center justify-content-center"
+>
+  <mat-spinner></mat-spinner>
+</div>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    (dayClicked)="dayClicked($event.day)"
+    *ngSwitchCase="CalendarView.Month"
+    [viewDate]="viewDate"
+    [events]="events"
+  >
+  </mwl-calendar-month-view>
+
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+  >
+  </mwl-calendar-week-view>
+
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+  >
+  </mwl-calendar-day-view>
+</div>

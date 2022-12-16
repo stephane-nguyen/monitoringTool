@@ -1,20 +1,21 @@
 <mat-toolbar>
   <button mat-icon-button aria-label="icon button with a home icon">
-    <img src="assets/cytech32.png" routerLink="/home" />
+    <img src="assets/cytech_logo.png" routerLink="/home" alt="icon" />
   </button>
-  <button
+  <!-- <button
     mat-button
     routerLink="/about"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
   >
     About
-  </button>
+  </button> -->
 
   <button
     mat-icon-button
     [matMenuTriggerFor]="menu"
     aria-label="icon-button with a menu"
+    class="fas fa-user"
   >
     <mat-icon>account_circle</mat-icon>
   </button>
@@ -22,6 +23,10 @@
     <button mat-menu-item (click)="goToLoginPage()">
       <mat-icon>person</mat-icon>
       <span>Log in</span>
+    </button>
+    <button mat-menu-item (click)="goToLoginPage()">
+      <mat-icon>person</mat-icon>
+      <span>Register</span>
     </button>
     <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>

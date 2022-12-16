@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingService } from 'src/app/shared/loading.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,6 +18,6 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   goToInformationPage() {
-    this.router.navigate(['/aboutyou']);
+    this.router.navigate(['/user']);
   }
 }

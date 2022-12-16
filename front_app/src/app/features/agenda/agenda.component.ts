@@ -4,11 +4,10 @@ import { startOfDay } from 'date-fns';
 import { LoadingService } from 'src/app/shared/loading.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-agenda',
+  templateUrl: './agenda.component.html',
 })
-export class HomeComponent implements OnInit {
+export class AgendaComponent implements OnInit {
   constructor(private loadingService: LoadingService) {}
 
   isLoading$ = this.loadingService.loading$;
@@ -48,6 +47,7 @@ export class HomeComponent implements OnInit {
   setView(view: CalendarView) {
     this.view = view;
   }
+
   //assume data from db
   //example: Hospital appointment info
   // let data=fromdb();
@@ -65,7 +65,4 @@ export class HomeComponent implements OnInit {
     console.log(date);
     //this.openAppointmentList(date)
   }
-}
-function someAsyncOperation() {
-  throw new Error('Function not implemented.');
 }
