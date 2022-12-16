@@ -2,7 +2,6 @@
   <button mat-icon-button aria-label="icon button with a home icon">
     <img src="assets/cytech32.png" routerLink="/home" />
   </button>
-
   <button
     mat-button
     routerLink="/about"
@@ -15,7 +14,7 @@
   <button
     mat-icon-button
     [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
+    aria-label="icon-button with a menu"
   >
     <mat-icon>account_circle</mat-icon>
   </button>
@@ -28,9 +27,9 @@
       <mat-icon>exit_to_app</mat-icon>
       <span>Log out</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
+    <button mat-menu-item (click)="goToInformationPage()">
+      <mat-icon>my_library_books</mat-icon>
+      <span>About you</span>
     </button>
   </mat-menu>
 </mat-toolbar>

@@ -25,6 +25,13 @@
   </div>
 </div>
 
+<div
+  *ngIf="isLoading$ | async"
+  class="d-flex align-items-center justify-content-center"
+>
+  <mat-spinner></mat-spinner>
+</div>
+
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
     (dayClicked)="dayClicked($event.day)"

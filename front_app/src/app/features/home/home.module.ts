@@ -8,6 +8,9 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 @NgModule({
   declarations: [HomeComponent],
   imports: [
@@ -18,6 +21,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     }),
     CommonModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    SharedModule,
   ],
 })
 export class HomeModule {}

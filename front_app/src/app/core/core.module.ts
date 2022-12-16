@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [NavBarComponent, PageNotFoundComponent],
@@ -17,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
+    SharedModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
