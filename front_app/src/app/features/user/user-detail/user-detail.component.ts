@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user-detail',
   template: `
     <div class="d-flex justify-content-center">
-      <div
-        class="card mx-auto"
-        style="width: 25em; height: 15em; margin-top:10em;"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center">Card title</h5>
-          <p class="card-text">Name</p>
-          <p class="card-text">Email</p>
-          <p class="card-text">Yo</p>
-        </div>
+      <div class="card mx-auto" style="width: 25em; margin-top:10em;">
+        <mat-card
+          class="justify-content-center"
+          style="background-color: #7CA3F6; color: black;"
+        >
+          <mat-card-header>
+            <div
+              mat-card-avatar
+              style=" background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+               background-size: cover;"
+            ></div>
+            <mat-card-title-group>
+              <mat-card-title>Shiba Inu</mat-card-title>
+              <mat-card-subtitle>Student/Teacher</mat-card-subtitle>
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-card-content> Email </mat-card-content>
+          <mat-card-content> Email </mat-card-content>
+          <mat-card-content> Email </mat-card-content>
+          <mat-card-content> Email </mat-card-content>
+        </mat-card>
       </div>
     </div>
   `,

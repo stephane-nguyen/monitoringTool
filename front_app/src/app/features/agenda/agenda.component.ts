@@ -62,7 +62,7 @@ export class AgendaComponent implements OnInit {
   // 	]
   // }
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    console.log(date);
+    console.log(date, events);
     //this.openAppointmentList(date)
   }
 }
