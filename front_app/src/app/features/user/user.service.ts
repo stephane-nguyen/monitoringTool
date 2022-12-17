@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  getUserById(id: number): Observable<User> {
+    throw new Error('Method not implemented.');
+  }
   constructor() {}
 
   //UTILS
