@@ -5,16 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-
-const userRoutes: Routes = [{ path: '', component: UserDetailComponent }];
+import { UserRoutingModule } from './user-routing.module';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
-  declarations: [UserDetailComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(userRoutes),
-    MatCardModule,
-    MatIconModule,
-  ],
+  declarations: [UserDetailComponent, UserListComponent],
+  imports: [CommonModule, MatCardModule, MatIconModule, UserRoutingModule],
 })
 export class UserModule {}

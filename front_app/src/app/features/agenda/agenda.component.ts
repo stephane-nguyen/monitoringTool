@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { startOfDay } from 'date-fns';
-import { LoadingService } from 'src/app/shared/loading.service';
+import { LoadingService } from 'src/app/core/components/loading-spinner/loading.service';
 
 @Component({
   selector: 'app-agenda',

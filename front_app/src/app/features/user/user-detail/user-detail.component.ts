@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-user-detail',
   template: `
-    <div class="d-flex justify-content-center">
-      <div class="card mx-auto" style="width: 25em; margin-top:10em;">
+    <div class="d-flex justify-content-center" borderCard>
+      <div class="mx-auto" style="margin-top:10em;">
         <mat-card
           class="justify-content-center"
           style="background-color: #7CA3F6; color: black;"
