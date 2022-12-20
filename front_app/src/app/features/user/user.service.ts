@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getUserList(): Observable<User[]> {
-    return this.http.get<User[]>('${this.apiServerUrl}/api/users').pipe(
+    return this.http.get<User[]>(`${this.apiServerUrl}/api/users`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, []))
     );
