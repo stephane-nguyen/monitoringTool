@@ -11,7 +11,9 @@ import { Component } from '@angular/core';
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button routerLink="/">Go to Homepage</button>
+        <button class="border border-secondary" mat-button routerLink="/">
+          Go to Homepage
+        </button>
       </mat-card-actions>
     </mat-card>
   `,
