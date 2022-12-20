@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,8 +19,10 @@ import { Component } from '@angular/core';
                background-size: cover;"
             ></div>
             <mat-card-title-group>
-              <mat-card-title>Shiba Inu</mat-card-title>
-              <mat-card-subtitle>Student/Teacher</mat-card-subtitle>
+              <mat-card-title
+                >{{ user?.lastname }} {{ user?.firstname }}</mat-card-title
+              >
+              <mat-card-subtitle>{{ user?.role }}</mat-card-subtitle>
             </mat-card-title-group>
           </mat-card-header>
           <mat-card-content> Email </mat-card-content>
@@ -29,6 +34,22 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class UserDetailComponent {
-  constructor() {}
+export class UserDetailComponent implements OnInit {
+  user?: User;
+
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    const userId: string | null = this.route.snapshot.paramMap.get('id');
+    if (userId) {
+      this.userService
+        .getUserById(+userId)
+        .subscribe((user) => (this.user = user));
+    } else {
+      this.user = undefined;
+    }
+  }
 }
