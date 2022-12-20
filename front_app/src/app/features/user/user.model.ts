@@ -1,6 +1,7 @@
 export interface User {
   id: number;
-  name: String;
+  firstname: String;
+  lastname: String;
   password: String;
   role: String;
 }
