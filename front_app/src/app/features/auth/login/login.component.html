@@ -1,14 +1,43 @@
-<div class="form-card">
-  <h2>Connexion</h2>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" id="email" />
-  </div>
-  <div class="form-group">
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" />
-  </div>
-  <div class="action-buttons">
-    <button (click)="onLogin()">Connexion</button>
+<div class="d-flex justify-content-center align-items-center h-100">
+  <div style="margin-top: 10em">
+    <mat-card class="col-sm-6" style="width: 260px">
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Enter your username"
+              [(ngModel)]="username"
+              name="username"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" />
+            <button
+              class="btn btn-outline-dark mb-2"
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <button
+            class="btn btn-outline-dark"
+            style="background-color: #7ca3f6"
+            mat-raised-button
+            (click)="login()"
+          >
+            Login
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

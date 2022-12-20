@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private token!: string;
+  isLoggedIn = false;
 
   login() {
-    this.token = 'MyFakeToken';
+    this.isLoggedIn = true;
   }
 
-  getToken(): string {
-    return this.token;
+  logout() {
+    this.isLoggedIn = false;
   }
 }
