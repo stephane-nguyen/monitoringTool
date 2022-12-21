@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  private apiServerUrl = environment.apiBaseUrl;
+  apiServerUrl = environment.apiBaseUrl;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
