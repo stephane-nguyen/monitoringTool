@@ -3,12 +3,17 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { startOfDay } from 'date-fns';
 import { LoadingService } from 'src/app/core/components/loading-spinner/loading.service';
 
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
 })
 export class AgendaComponent implements OnInit {
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+    private loadingService: LoadingService,
+    private dialog: MatDialog
+  ) {}
 
   isLoading$ = this.loadingService.loading$;
 
@@ -48,19 +53,6 @@ export class AgendaComponent implements OnInit {
     this.view = view;
   }
 
-  //assume data from db
-  //example: Hospital appointment info
-  // let data=fromdb();
-  // for(let x of data)
-  // {
-  // this.events = [
-  //           ...this.events,
-  //           {
-  // 	start:x["appointment_date"],
-  // 	title:x["patient_name"]+x["medical_problem"]
-  //  	 }
-  // 	]
-  // }
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     console.log(date, events);
     //this.openAppointmentList(date)

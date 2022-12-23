@@ -14,7 +14,7 @@
   <button
     class="border border-secondary"
     mat-button
-    routerLink="/users/supervisors"
+    routerLink="/supervisors"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
   >
@@ -33,10 +33,6 @@
     <button mat-menu-item (click)="goToLoginPage()">
       <mat-icon>person</mat-icon>
       <span>Log in</span>
-    </button>
-    <button mat-menu-item (click)="goToLoginPage()">
-      <mat-icon>person</mat-icon>
-      <span>Register</span>
     </button>
     <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>

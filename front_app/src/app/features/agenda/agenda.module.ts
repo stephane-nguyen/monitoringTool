@@ -9,7 +9,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from 'src/app/shared/shared.module';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AgendaComponent],
@@ -22,7 +25,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     MatButtonToggleModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     SharedModule,
+    FormsModule,
   ],
 })
 export class AgendaModule {}

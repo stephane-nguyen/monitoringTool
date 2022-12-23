@@ -5,10 +5,30 @@ import {
 } from '@angular/common/http/testing';
 
 import { UserService } from './user.service';
+import { User } from './user.model';
 
 describe('UserService', () => {
   let service: UserService;
   let httpMock: HttpTestingController;
+  const mockUsers = [
+    {
+      id: 1,
+      firstname: 'Alice',
+      lastname: 'Mahr',
+      password: 'yo',
+      email: 'alice@gmail.com',
+      role: 'Student',
+    },
+    {
+      id: 2,
+      firstname: 'Bob',
+      lastname: 'Marley',
+      password: 'oyo',
+      email: 'bob@gmail.com',
+      role: 'Teacher',
+    },
+  ];
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -31,18 +51,24 @@ describe('UserService', () => {
   });
 
   describe('getUserById()', () => {
-    it('should return the user matching the id', () => {
-      const user = { id: 1 };
+    const singleUser = {
+      id: 1,
+      firstname: 'Alice',
+      lastname: 'Mahr',
+      password: 'yo',
+      email: 'a@gmail.com',
+      role: 'Student',
+    };
+  });
 
-      service.getUserById(user.id).subscribe((res: any) => {
-        expect(res).toEqual(user);
+  describe('getUserList()', () => {
+    it('should return all users from mockUsers', () => {
+      service.getUserList().subscribe((users: User[]) => {
+        expect(users).toEqual(mockUsers);
       });
-
-      const req = httpMock.expectOne(
-        `http://localhost:4200/api/users/${user.id}`
-      );
+      const req = httpMock.expectOne('http://localhost:8080/api/users');
       expect(req.request.method).toBe('GET');
-      req.flush(user);
+      req.flush(mockUsers);
     });
   });
 });
