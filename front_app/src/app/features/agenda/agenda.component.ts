@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
-import { startOfDay } from 'date-fns';
+import {
+  startOfDay,
+  endOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addHours,
+} from 'date-fns';
 import { LoadingService } from 'src/app/core/components/loading-spinner/loading.service';
 
-import { MatDialog } from '@angular/material/dialog';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
 })
 export class AgendaComponent implements OnInit {
-  constructor(
-    private loadingService: LoadingService,
-    private dialog: MatDialog
-  ) {}
+  constructor(private loadingService: LoadingService) {}
 
   isLoading$ = this.loadingService.loading$;
 
@@ -37,15 +43,27 @@ export class AgendaComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Week;
   CalendarView = CalendarView;
+  refresh = new Subject<void>();
 
   events: CalendarEvent[] = [
     {
-      start: startOfDay(new Date()),
-      title: 'First event',
+      start: subDays(startOfDay(new Date()), 1),
+      end: addDays(new Date(), 1),
+      title: 'A 3 day event',
     },
     {
       start: startOfDay(new Date()),
-      title: 'Second event',
+      title: 'An event with no end date',
+    },
+    {
+      start: subDays(endOfMonth(new Date()), 3),
+      end: addDays(endOfMonth(new Date()), 3),
+      title: 'A long event that spans 2 months',
+    },
+    {
+      start: addHours(startOfDay(new Date()), 2),
+      end: addHours(new Date(), 2),
+      title: 'A draggable and resizable event',
     },
   ];
 
@@ -55,6 +73,18 @@ export class AgendaComponent implements OnInit {
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     console.log(date, events);
-    //this.openAppointmentList(date)
+  }
+  addEvent(): void {
+    this.events = [
+      ...this.events,
+      {
+        title: 'New event',
+        start: startOfDay(new Date()),
+        end: endOfDay(new Date()),
+      },
+    ];
+  }
+  deleteEvent(eventToDelete: CalendarEvent) {
+    this.events = this.events.filter((event) => event !== eventToDelete);
   }
 }

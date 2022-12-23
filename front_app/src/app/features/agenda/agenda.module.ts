@@ -14,6 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { FormsModule } from '@angular/forms';
 
+import { FlatpickrModule } from 'angularx-flatpickr';
+
 @NgModule({
   declarations: [AgendaComponent],
   imports: [
@@ -28,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     SharedModule,
     FormsModule,
+    FlatpickrModule,
   ],
 })
 export class AgendaModule {}
