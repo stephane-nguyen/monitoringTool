@@ -96,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `dbCalendar`.`Exam` (
   `Room_idRoom` INT NOT NULL,
   `Subjects_idSubject` INT NOT NULL,
   PRIMARY KEY (`idExam`),
-  INDEX `fk_Exam_Room1_idx` (`Room_idRoom` ASC) VISIBLE,
-  INDEX `fk_Exam_Subjects1_idx` (`Subjects_idSubject` ASC) VISIBLE,
+  INDEX `fk_Exam_Room1_idx` (`Room_idRoom` ASC),
+  INDEX `fk_Exam_Subjects1_idx` (`Subjects_idSubject` ASC),
   CONSTRAINT `fk_Exam_Room1`
     FOREIGN KEY (`Room_idRoom`)
     REFERENCES `dbCalendar`.`Room` (`idRoom`)
@@ -120,8 +120,8 @@ CREATE TABLE IF NOT EXISTS `dbCalendar`.`Speciality_has_Subjects` (
   `Speciality_idSpeciality` INT NOT NULL,
   `Subjects_idSubject` INT NOT NULL,
   PRIMARY KEY (`Speciality_idSpeciality`, `Subjects_idSubject`),
-  INDEX `fk_Speciality_has_Subjects_Subjects1_idx` (`Subjects_idSubject` ASC) VISIBLE,
-  INDEX `fk_Speciality_has_Subjects_Speciality_idx` (`Speciality_idSpeciality` ASC) VISIBLE,
+  INDEX `fk_Speciality_has_Subjects_Subjects1_idx` (`Subjects_idSubject` ASC) ,
+  INDEX `fk_Speciality_has_Subjects_Speciality_idx` (`Speciality_idSpeciality` ASC) ,
   CONSTRAINT `fk_Speciality_has_Subjects_Speciality`
     FOREIGN KEY (`Speciality_idSpeciality`)
     REFERENCES `dbCalendar`.`Speciality` (`idSpeciality`)
@@ -144,8 +144,8 @@ CREATE TABLE IF NOT EXISTS `dbCalendar`.`supervise` (
   `Teacher_idTeacher` INT NOT NULL,
   `Exam_idExam` INT NOT NULL,
   PRIMARY KEY (`Teacher_idTeacher`, `Exam_idExam`),
-  INDEX `fk_Teacher_has_Exam_Exam1_idx` (`Exam_idExam` ASC) VISIBLE,
-  INDEX `fk_Teacher_has_Exam_Teacher1_idx` (`Teacher_idTeacher` ASC) VISIBLE,
+  INDEX `fk_Teacher_has_Exam_Exam1_idx` (`Exam_idExam` ASC) ,
+  INDEX `fk_Teacher_has_Exam_Teacher1_idx` (`Teacher_idTeacher` ASC) ,
   CONSTRAINT `fk_Teacher_has_Exam_Teacher1`
     FOREIGN KEY (`Teacher_idTeacher`)
     REFERENCES `dbCalendar`.`Teacher` (`idTeacher`)
@@ -168,8 +168,8 @@ CREATE TABLE IF NOT EXISTS `dbCalendar`.`Student_has_Exam` (
   `Student_idStudent` INT NOT NULL,
   `Exam_idExam` INT NOT NULL,
   PRIMARY KEY (`Student_idStudent`, `Exam_idExam`),
-  INDEX `fk_Student_has_Exam_Exam1_idx` (`Exam_idExam` ASC) VISIBLE,
-  INDEX `fk_Student_has_Exam_Student1_idx` (`Student_idStudent` ASC) VISIBLE,
+  INDEX `fk_Student_has_Exam_Exam1_idx` (`Exam_idExam` ASC) ,
+  INDEX `fk_Student_has_Exam_Student1_idx` (`Student_idStudent` ASC) ,
   CONSTRAINT `fk_Student_has_Exam_Student1`
     FOREIGN KEY (`Student_idStudent`)
     REFERENCES `dbCalendar`.`Student` (`idStudent`)
