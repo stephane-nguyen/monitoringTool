@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
-import { User } from '../../../shared/model/user.model';
+import { IUser } from '../../../shared/model/IUser';
 
 @Component({
   selector: 'app-user-detail',
@@ -22,7 +22,7 @@ import { User } from '../../../shared/model/user.model';
               <mat-card-title
                 >{{ user?.lastname }} {{ user?.firstname }}</mat-card-title
               >
-              <mat-card-subtitle>{{ user?.role }}</mat-card-subtitle>
+              <mat-card-subtitle>teacher</mat-card-subtitle>
             </mat-card-title-group>
           </mat-card-header>
           <mat-card-content> ID: {{ user?.id }} </mat-card-content>
@@ -33,7 +33,7 @@ import { User } from '../../../shared/model/user.model';
   `,
 })
 export class UserDetailComponent implements OnInit {
-  user?: User;
+  user?: IUser;
 
   constructor(
     private userService: UserService,

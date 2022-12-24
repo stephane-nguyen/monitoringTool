@@ -14,6 +14,15 @@
   <button
     class="border border-secondary"
     mat-button
+    routerLink="/subjects"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Subjects
+  </button>
+  <button
+    class="border border-secondary"
+    mat-button
     routerLink="/supervisors"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"

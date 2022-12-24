@@ -15,6 +15,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/user/user.module').then((m) => m.UserModule),
   },
+
+  {
+    path: 'specialities',
+    loadChildren: () =>
+      import('./features/speciality/speciality.module').then(
+        (m) => m.SpecialityModule
+      ),
+  },
+
+  {
+    path: 'subjects',
+    loadChildren: () =>
+      import('./features/subject/subject.module').then((m) => m.SubjectModule),
+  },
+
   { path: 'login', component: LoginComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', component: PageNotFoundComponent },

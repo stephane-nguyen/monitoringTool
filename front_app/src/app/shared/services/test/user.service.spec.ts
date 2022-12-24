@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 
 import { UserService } from '../user.service';
-import { User } from '../../model/user.model';
+import { User } from '../../model/IUser';
 
 describe('UserService', () => {
   let service: UserService;
