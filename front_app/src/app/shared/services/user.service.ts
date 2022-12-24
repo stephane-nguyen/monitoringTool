@@ -5,6 +5,8 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { User } from '../../shared/model/user.model';
 import { environment } from 'src/environments/environment';
 
+import { handleError, log } from './utils';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,21 +14,22 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   apiServerUrl = environment.apiBaseUrl;
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   getUserById(userId: number): Observable<User | undefined> {
     return this.http.get<User>(`${this.apiServerUrl}/api/users/${userId}`).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, undefined))
+      tap((response) => log(response)),
+      catchError((error) => handleError(error, undefined))
     );
   }
 
   getUserList(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiServerUrl}/api/users`).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, []))
+      tap((response) => log(response)),
+      catchError((error) => handleError(error, []))
     );
   }
 
@@ -34,8 +37,8 @@ export class UserService {
     return this.http
       .post<User>(`${this.apiServerUrl}/api/users`, user, this.httpOptions)
       .pipe(
-        tap((response) => this.log(response)),
-        catchError((error) => this.handleError(error, undefined))
+        tap((response) => log(response)),
+        catchError((error) => handleError(error, undefined))
       );
   }
 
@@ -43,30 +46,15 @@ export class UserService {
     return this.http
       .put(`${this.apiServerUrl}/api/users`, user, this.httpOptions)
       .pipe(
-        tap((response) => this.log(response)),
-        catchError((error) => this.handleError(error, undefined))
+        tap((response) => log(response)),
+        catchError((error) => handleError(error, undefined))
       );
   }
 
   deleteUserById(userId: number): Observable<User | undefined> {
     return this.http.delete(`${this.apiServerUrl}/api/users/${userId}`).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, undefined))
+      tap((response) => log(response)),
+      catchError((error) => handleError(error, undefined))
     );
-  }
-
-  //UTILS
-  private log(response: any) {
-    console.table(response);
-  }
-  /**
-   * Handle Http operation that failed
-   * @param error
-   * @param errorValueByDefault
-   * @returns
-   */
-  private handleError(error: Error, errorValueByDefault: any) {
-    console.error(error);
-    return of(errorValueByDefault);
   }
 }
