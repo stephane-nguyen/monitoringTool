@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, tap } from 'rxjs';
 
-import { User } from './user.model';
+import { User } from '../../shared/model/user.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
