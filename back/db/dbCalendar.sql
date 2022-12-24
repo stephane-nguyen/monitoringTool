@@ -76,11 +76,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dbCalendar`.`Subjects`
+-- Table `dbCalendar`.`Subject`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dbCalendar`.`Subjects` ;
+DROP TABLE IF EXISTS `dbCalendar`.`Subject` ;
 
-CREATE TABLE IF NOT EXISTS `dbCalendar`.`Subjects` (
+CREATE TABLE IF NOT EXISTS `dbCalendar`.`Subject` (
   `idSubject` INT NOT NULL AUTO_INCREMENT,
   `nameSubject` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idSubject`))
@@ -120,14 +120,14 @@ CREATE TABLE IF NOT EXISTS `dbCalendar`.`Exam` (
   `idExam` INT NOT NULL AUTO_INCREMENT,
   `startDate` DATETIME NOT NULL,
   `duration` INT NOT NULL,
-  `Subjects_idSubject` INT NOT NULL,
+  `Subject_idSubject` INT NOT NULL,
   `Room_idRoom` INT NOT NULL,
   PRIMARY KEY (`idExam`),
-  INDEX `fk_Exam_Subjects1_idx` (`Subjects_idSubject` ASC) ,
+  INDEX `fk_Exam_Subject1_idx` (`Subject_idSubject` ASC) ,
   INDEX `fk_Exam_Room1_idx` (`Room_idRoom` ASC) ,
-  CONSTRAINT `fk_Exam_Subjects1`
-    FOREIGN KEY (`Subjects_idSubject`)
-    REFERENCES `dbCalendar`.`Subjects` (`idSubject`)
+  CONSTRAINT `fk_Exam_Subject1`
+    FOREIGN KEY (`Subject_idSubject`)
+    REFERENCES `dbCalendar`.`Subject` (`idSubject`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Exam_Room1`
@@ -139,24 +139,24 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dbCalendar`.`Speciality_has_Subjects`
+-- Table `dbCalendar`.`Speciality_has_Subject`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dbCalendar`.`Speciality_has_Subjects` ;
+DROP TABLE IF EXISTS `dbCalendar`.`Speciality_has_Subject` ;
 
-CREATE TABLE IF NOT EXISTS `dbCalendar`.`Speciality_has_Subjects` (
+CREATE TABLE IF NOT EXISTS `dbCalendar`.`Speciality_has_Subject` (
   `Speciality_idSpeciality` INT NOT NULL,
-  `Subjects_idSubject` INT NOT NULL,
-  PRIMARY KEY (`Speciality_idSpeciality`, `Subjects_idSubject`),
-  INDEX `fk_Speciality_has_Subjects_Subjects1_idx` (`Subjects_idSubject` ASC) ,
-  INDEX `fk_Speciality_has_Subjects_Speciality1_idx` (`Speciality_idSpeciality` ASC) ,
-  CONSTRAINT `fk_Speciality_has_Subjects_Speciality1`
+  `Subject_idSubject` INT NOT NULL,
+  PRIMARY KEY (`Speciality_idSpeciality`, `Subject_idSubject`),
+  INDEX `fk_Speciality_has_Subject_Subject1_idx` (`Subject_idSubject` ASC) ,
+  INDEX `fk_Speciality_has_Subject_Speciality1_idx` (`Speciality_idSpeciality` ASC) ,
+  CONSTRAINT `fk_Speciality_has_Subject_Speciality1`
     FOREIGN KEY (`Speciality_idSpeciality`)
     REFERENCES `dbCalendar`.`Speciality` (`idSpeciality`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Speciality_has_Subjects_Subjects1`
-    FOREIGN KEY (`Subjects_idSubject`)
-    REFERENCES `dbCalendar`.`Subjects` (`idSubject`)
+  CONSTRAINT `fk_Speciality_has_Subject_Subject1`
+    FOREIGN KEY (`Subject_idSubject`)
+    REFERENCES `dbCalendar`.`Subject` (`idSubject`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
