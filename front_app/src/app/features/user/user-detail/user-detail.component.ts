@@ -25,10 +25,8 @@ import { User } from '../../../shared/model/user.model';
               <mat-card-subtitle>{{ user?.role }}</mat-card-subtitle>
             </mat-card-title-group>
           </mat-card-header>
-          <mat-card-content> Email </mat-card-content>
-          <mat-card-content> Email </mat-card-content>
-          <mat-card-content> Email </mat-card-content>
-          <mat-card-content> Email </mat-card-content>
+          <mat-card-content> ID: {{ user?.id }} </mat-card-content>
+          <mat-card-content> Email: {{ user?.email }} </mat-card-content>
         </mat-card>
       </div>
     </div>
