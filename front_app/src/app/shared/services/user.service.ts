@@ -20,16 +20,14 @@ export class UserService {
   };
 
   getUserById(userId: number): Observable<IUser | undefined> {
-    return this.http
-      .get<IUser>(`${this.apiServerUrl}/api/users/${userId}`)
-      .pipe(
-        tap((response) => log(response)),
-        catchError((error) => handleError(error, undefined))
-      );
+    return this.http.get<IUser>(`${this.apiServerUrl}/api/user/${userId}`).pipe(
+      tap((response) => log(response)),
+      catchError((error) => handleError(error, undefined))
+    );
   }
 
   getUserList(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`${this.apiServerUrl}/api/users`).pipe(
+    return this.http.get<IUser[]>(`${this.apiServerUrl}/api/user`).pipe(
       tap((response) => log(response)),
       catchError((error) => handleError(error, []))
     );
@@ -37,7 +35,7 @@ export class UserService {
 
   addUser(user: IUser): Observable<IUser | undefined> {
     return this.http
-      .post<IUser>(`${this.apiServerUrl}/api/users`, user, this.httpOptions)
+      .post<IUser>(`${this.apiServerUrl}/api/user`, user, this.httpOptions)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
@@ -46,7 +44,7 @@ export class UserService {
 
   updateUser(user: IUser): Observable<IUser | undefined> {
     return this.http
-      .put(`${this.apiServerUrl}/api/users`, user, this.httpOptions)
+      .put(`${this.apiServerUrl}/api/user`, user, this.httpOptions)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
@@ -54,7 +52,7 @@ export class UserService {
   }
 
   deleteUserById(userId: number): Observable<IUser | undefined> {
-    return this.http.delete(`${this.apiServerUrl}/api/users/${userId}`).pipe(
+    return this.http.delete(`${this.apiServerUrl}/api/user/${userId}`).pipe(
       tap((response) => log(response)),
       catchError((error) => handleError(error, undefined))
     );
