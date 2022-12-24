@@ -1,4 +1,4 @@
-package com.example.demo.student;
+package com.example.demo.user;
 
 import java.io.Serializable;
 
@@ -9,36 +9,35 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table(name = "student")
-public class Student implements Serializable {
+@Table(name = "user")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "idStudent")
-	private Integer idStudent;
+    @Column(name = "idUser")
+	private Integer idUser;
 	private String firstname;
 	private String lastname;
 	private String email;
 	private String password;
 	
-	public Student() {
+	public User() {
 		super();
 	}
 
-	public Student(String firstname, String lastname, String email, String password) {
+	public User(String firstname, String lastname, String email, String password) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.password = password;
 	}
 	
-	public Integer getIdStudent() {
-		return this.idStudent;
+	public Integer getIdUser() {
+		return this.idUser;
 	}
 
-	public void setIdStudent(Integer idStudent) {
-		this.idStudent = idStudent;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
 
@@ -76,7 +75,7 @@ public class Student implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Student [idStudent=" + idStudent + ", firstname=" + firstname + ", lastname=" + lastname + ", email="
+		return "User [idUser=" + idUser + ", firstname=" + firstname + ", lastname=" + lastname + ", email="
 				+ email + ", password=" + password + "]";
 	}
 	
