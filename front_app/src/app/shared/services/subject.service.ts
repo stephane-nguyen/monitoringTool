@@ -16,7 +16,7 @@ export class SubjectService {
   };
   getSubjectById(subjectId: number): Observable<Subject | undefined> {
     return this.http
-      .get<Subject>(`${this.apiServerUrl}/api/subjects/${subjectId}`)
+      .get<Subject>(`${this.apiServerUrl}/api/subject/${subjectId}`)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
@@ -24,7 +24,7 @@ export class SubjectService {
   }
 
   getSubjectList(): Observable<Subject[]> {
-    return this.http.get<Subject[]>(`${this.apiServerUrl}/api/subjects`).pipe(
+    return this.http.get<Subject[]>(`${this.apiServerUrl}/api/subject`).pipe(
       tap((response) => log(response)),
       catchError((error) => handleError(error, []))
     );
@@ -33,7 +33,7 @@ export class SubjectService {
   addSubject(subject: Subject): Observable<Subject | undefined> {
     return this.http
       .post<Subject>(
-        `${this.apiServerUrl}/api/subjects`,
+        `${this.apiServerUrl}/api/subject`,
         subject,
         this.httpOptions
       )
@@ -45,7 +45,7 @@ export class SubjectService {
 
   updateSubject(subject: Subject): Observable<Subject | undefined> {
     return this.http
-      .put(`${this.apiServerUrl}/api/subjects`, subject, this.httpOptions)
+      .put(`${this.apiServerUrl}/api/subject`, subject, this.httpOptions)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
@@ -54,7 +54,7 @@ export class SubjectService {
 
   deleteSubjectById(subjectId: number): Observable<Subject | undefined> {
     return this.http
-      .delete(`${this.apiServerUrl}/api/subjects/${subjectId}`)
+      .delete(`${this.apiServerUrl}/api/subject/${subjectId}`)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))

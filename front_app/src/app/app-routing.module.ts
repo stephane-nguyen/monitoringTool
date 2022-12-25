@@ -25,7 +25,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'subjects',
+    path: 'subject',
     loadChildren: () =>
       import('./features/subject/subject.module').then((m) => m.SubjectModule),
   },
