@@ -18,8 +18,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { AgendaModule } from '../features/agenda/agenda.module';
 import { SpecialityModule } from '../features/speciality/speciality.module';
-import { SubjectModule } from '../features/subject/subject.module';
 import { UserModule } from '../features/user/user.module';
+import { SubjectModule } from '../features/subject/subject.module';
 
 @NgModule({
   declarations: [NavBarComponent, PageNotFoundComponent],
@@ -32,8 +32,8 @@ import { UserModule } from '../features/user/user.module';
 
     AgendaModule,
     SpecialityModule,
-    SubjectModule,
     UserModule,
+    SubjectModule,
 
     MatButtonModule,
     MatCardModule,

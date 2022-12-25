@@ -13,6 +13,7 @@ import { SubjectDialogFormComponent } from '../subject-dialog-form/subject-dialo
 })
 export class SubjectListComponent implements OnInit {
   subjects?: Subject[];
+
   constructor(
     private matDialog: MatDialog,
     private router: Router,
@@ -23,6 +24,7 @@ export class SubjectListComponent implements OnInit {
     this.subjectService
       .getSubjectList()
       .subscribe((subjects) => (this.subjects = subjects));
+    // this.subjectService.requiredRefresh;
   }
 
   deleteSubject(subject: Subject) {
@@ -32,8 +34,6 @@ export class SubjectListComponent implements OnInit {
   }
 
   updateSubject(subject: Subject) {}
-
-  addSubject() {}
 
   openPopUp1() {
     const popUp = this.matDialog.open(SubjectDialogFormComponent, {
@@ -57,7 +57,7 @@ export class SubjectListComponent implements OnInit {
       height: '190px',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
-      // data: subject,
+      data: subject,
     });
 
     popUp.afterClosed().subscribe((itemSubject) => {

@@ -17,14 +17,14 @@ import { MatInputModule } from '@angular/material/input';
     SubjectDialogFormComponent,
   ],
   imports: [
-    CommonModule,
     SubjectRoutingModule,
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatIconModule,
   ],
 })
 export class SubjectModule {}
