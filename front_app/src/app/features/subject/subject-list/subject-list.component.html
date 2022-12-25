@@ -6,27 +6,31 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <th>Subject ID</th>
           <th>Subject name</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let subject of subjects">
-          <!-- <td>{{ subject.idSubject }}</td>
-          <td>{{ subject.nameSubject }}</td> -->
-          <td>test</td>
-          <td>test</td>
+          <td>{{ subject.idSubject }}</td>
+          <td>{{ subject.nameSubject }}</td>
           <td>
-            <!-- <button (click)="deleteSubject(subject)" class="btn btn-danger">
-              Delete
-            </button> -->
-            <!-- <button
+            <button
+              mat-menu-item
               (click)="updateSubject(subject)"
-              class="btn btn-info"
-              style="margin-left: 10px"
+              class="text-primary"
             >
-              Update
-            </button> -->
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-menu-item
+              (click)="deleteSubject(subject)"
+              class="text-danger"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
           </td>
         </tr>
       </tbody>

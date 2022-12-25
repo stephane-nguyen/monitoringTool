@@ -7,6 +7,8 @@ import { SubjectAddComponent } from './subject-add/subject-add.component';
 import { SubjectDialogFormComponent } from './subject-dialog-form/subject-dialog-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     SubjectListComponent,
@@ -20,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatIconModule,
   ],
 })
 export class SubjectModule {}

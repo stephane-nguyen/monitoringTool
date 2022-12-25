@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IUser } from 'src/app/shared/model/IUser';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,8 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  ngOnInit(): void {}
-  constructor(private router: Router) {}
+  user: IUser | undefined;
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const userId: String | null = this.route.snapshot.paramMap.get('id');
+    if (userId) {
+      this.userService
+        .getUserById(+userId)
+        .subscribe((user) => (this.user = user));
+    } else {
+      this.user = undefined;
+    }
+  }
 
   logout() {
     //TO DO
@@ -18,6 +35,6 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   goToInformationPage() {
-    this.router.navigate(['/user']);
+    this.router.navigate(['/user', this.user?.id]);
   }
 }

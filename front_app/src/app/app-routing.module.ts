@@ -17,7 +17,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'specialities',
+    path: 'speciality',
     loadChildren: () =>
       import('./features/speciality/speciality.module').then(
         (m) => m.SpecialityModule

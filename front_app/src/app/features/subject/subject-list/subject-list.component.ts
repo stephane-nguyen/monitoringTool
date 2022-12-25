@@ -31,6 +31,10 @@ export class SubjectListComponent implements OnInit {
       .subscribe(() => this.goToSubjectList());
   }
 
+  updateSubject(subject: Subject) {}
+
+  addSubject() {}
+
   // openDialog(subject: Subject) {
   //   const dialogRef = this.dialog.open(SubjectDialogFormComponent, {
   //     data: subject,
@@ -47,6 +51,6 @@ export class SubjectListComponent implements OnInit {
   populateForm(subject: Subject) {}
 
   goToSubjectList() {
-    this.router.navigate(['/subjects']);
+    this.router.navigate(['/subject']);
   }
 }

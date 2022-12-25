@@ -48,6 +48,6 @@ export class SpecialityListComponent implements OnInit {
   // }
 
   gotoList() {
-    this.router.navigate(['/specialities']);
+    this.router.navigate(['/speciality']);
   }
 }

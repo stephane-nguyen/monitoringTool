@@ -16,7 +16,7 @@ export class SpecialityService {
   };
   getSpecialityById(specialityId: number): Observable<Speciality | undefined> {
     return this.http
-      .get<Speciality>(`${this.apiServerUrl}/api/specialities/${specialityId}`)
+      .get<Speciality>(`${this.apiServerUrl}/api/speciality/${specialityId}`)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
@@ -25,7 +25,7 @@ export class SpecialityService {
 
   getSpecialityList(): Observable<Speciality[]> {
     return this.http
-      .get<Speciality[]>(`${this.apiServerUrl}/api/specialities`)
+      .get<Speciality[]>(`${this.apiServerUrl}/api/speciality`)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, []))
@@ -35,7 +35,7 @@ export class SpecialityService {
   addSpeciality(speciality: Speciality): Observable<Speciality | undefined> {
     return this.http
       .post<Speciality>(
-        `${this.apiServerUrl}/api/specialities`,
+        `${this.apiServerUrl}/api/speciality`,
         speciality,
         this.httpOptions
       )
@@ -47,11 +47,7 @@ export class SpecialityService {
 
   updateSpeciality(speciality: Speciality): Observable<Speciality | undefined> {
     return this.http
-      .put(
-        `${this.apiServerUrl}/api/specialities`,
-        speciality,
-        this.httpOptions
-      )
+      .put(`${this.apiServerUrl}/api/speciality`, speciality, this.httpOptions)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
@@ -62,7 +58,7 @@ export class SpecialityService {
     specialityId: number
   ): Observable<Speciality | undefined> {
     return this.http
-      .delete(`${this.apiServerUrl}/api/specialities/${specialityId}`)
+      .delete(`${this.apiServerUrl}/api/speciality/${specialityId}`)
       .pipe(
         tap((response) => log(response)),
         catchError((error) => handleError(error, undefined))
