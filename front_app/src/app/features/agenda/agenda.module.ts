@@ -6,7 +6,7 @@ import { AgendaComponent } from './agenda.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -20,6 +20,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
   declarations: [AgendaComponent],
   imports: [
     AgendaRoutingModule,
+    FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
@@ -28,9 +29,9 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     MatButtonToggleModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatIconModule,
     SharedModule,
     FormsModule,
-    FlatpickrModule,
   ],
 })
 export class AgendaModule {}

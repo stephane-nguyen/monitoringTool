@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarView,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent,
+} from 'angular-calendar';
 import {
   startOfDay,
   endOfDay,
@@ -10,9 +15,26 @@ import {
   isSameMonth,
   addHours,
 } from 'date-fns';
+import { EventColor } from 'calendar-utils';
+
 import { LoadingService } from 'src/app/core/components/loading-spinner/loading.service';
 
 import { Subject } from 'rxjs';
+
+const colors: Record<string, EventColor> = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF',
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
+  },
+};
 
 @Component({
   selector: 'app-agenda',
@@ -39,7 +61,6 @@ export class AgendaComponent implements OnInit {
   //   });
   // }
 
-  title = 'Scheduler App';
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Week;
   CalendarView = CalendarView;
@@ -50,6 +71,7 @@ export class AgendaComponent implements OnInit {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
       title: 'A 3 day event',
+      color: colors['yellow'],
     },
     {
       start: startOfDay(new Date()),
@@ -63,7 +85,8 @@ export class AgendaComponent implements OnInit {
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
+      title: 'An event',
+      color: colors['red'],
     },
   ];
 
@@ -74,6 +97,25 @@ export class AgendaComponent implements OnInit {
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     console.log(date, events);
   }
+
+  eventTimesChanged({
+    event,
+    newStart,
+    newEnd,
+  }: CalendarEventTimesChangedEvent): void {
+    this.events = this.events.map((iEvent) => {
+      if (iEvent === event) {
+        return {
+          ...event,
+          start: newStart,
+          end: newEnd,
+        };
+      }
+      return iEvent;
+    });
+    //this.handleEvent('Dropped or resized', event);
+  }
+
   addEvent(): void {
     this.events = [
       ...this.events,

@@ -14,7 +14,7 @@
       <tbody>
         <tr *ngFor="let speciality of specialities | async">
           <td>{{ speciality.nameSpeciality }}</td>
-          <td>{{ speciality.subject }}</td>
+          <td>{{ speciality.subjects }}</td>
           <td>
             <button
               (click)="deleteSpeciality(speciality.idSpeciality)"

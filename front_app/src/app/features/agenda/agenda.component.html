@@ -43,6 +43,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-month-view>
 
@@ -51,6 +52,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-week-view>
 
@@ -59,6 +61,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-day-view>
 </div>
@@ -118,8 +121,12 @@
           />
         </td>
         <td>
-          <button class="btn btn-danger" (click)="deleteEvent(event)">
-            Delete
+          <button
+            mat-icon-button
+            class="text-danger"
+            (click)="deleteEvent(event)"
+          >
+            <mat-icon>delete</mat-icon>
           </button>
         </td>
       </tr>
