@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Subject } from '../model/subject.model';
-import { log, handleError } from './utils';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +17,15 @@ export class SubjectService {
     return this.http
       .get<Subject>(`${this.apiServerUrl}/api/subject/${subjectId}`)
       .pipe(
-        tap((response) => log(response)),
-        catchError((error) => handleError(error, undefined))
+        tap((response) => this.log(response)),
+        catchError((error) => this.handleError(error, undefined))
       );
   }
 
   getSubjectList(): Observable<Subject[]> {
     return this.http.get<Subject[]>(`${this.apiServerUrl}/api/subject`).pipe(
-      tap((response) => log(response)),
-      catchError((error) => handleError(error, []))
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, []))
     );
   }
 
@@ -38,8 +37,8 @@ export class SubjectService {
         this.httpOptions
       )
       .pipe(
-        tap((response) => log(response)),
-        catchError((error) => handleError(error, undefined))
+        tap((response) => this.log(response)),
+        catchError((error) => this.handleError(error, undefined))
       );
   }
 
@@ -47,8 +46,8 @@ export class SubjectService {
     return this.http
       .put(`${this.apiServerUrl}/api/subject`, subject, this.httpOptions)
       .pipe(
-        tap((response) => log(response)),
-        catchError((error) => handleError(error, undefined))
+        tap((response) => this.log(response)),
+        catchError((error) => this.handleError(error, undefined))
       );
   }
 
@@ -63,7 +62,7 @@ export class SubjectService {
 
   /* UTILS */
 
-  log(response: any) {
+  private log(response: any) {
     console.table(response);
   }
   /**
@@ -72,7 +71,7 @@ export class SubjectService {
    * @param errorValueByDefault
    * @returns
    */
-  handleError(error: Error, errorValueByDefault: any) {
+  private handleError(error: Error, errorValueByDefault: any) {
     console.error(error);
     return of(errorValueByDefault);
   }

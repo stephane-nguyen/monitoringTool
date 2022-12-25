@@ -1,6 +1,9 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>List of Subjects</h2>
+    <button mat-menu-item (click)="openPopUp1()" class="text-primary">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
@@ -18,7 +21,7 @@
           <td>
             <button
               mat-menu-item
-              (click)="updateSubject(subject)"
+              (click)="openPopUp(subject)"
               class="text-primary"
             >
               <mat-icon>edit</mat-icon>

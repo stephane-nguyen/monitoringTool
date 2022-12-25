@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Add Subject</h2>
+<form [formGroup]="reactiveForm" (ngSubmit)="saveSubject()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Subject name</mat-label>
+      <input
+        matInput
+        placeholder="Subject Name"
+        formControlName="subjectName"
+      />
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      style="margin-left: 10px"
+      (click)="closePopUp()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

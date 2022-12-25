@@ -14,7 +14,7 @@ import { SubjectDialogFormComponent } from '../subject-dialog-form/subject-dialo
 export class SubjectListComponent implements OnInit {
   subjects?: Subject[];
   constructor(
-    private dialog: MatDialog,
+    private matDialog: MatDialog,
     private router: Router,
     private subjectService: SubjectService
   ) {}
@@ -35,20 +35,38 @@ export class SubjectListComponent implements OnInit {
 
   addSubject() {}
 
-  // openDialog(subject: Subject) {
-  //   const dialogRef = this.dialog.open(SubjectDialogFormComponent, {
-  //     data: subject,
-  //   });
+  openPopUp1() {
+    const popUp = this.matDialog.open(SubjectDialogFormComponent, {
+      width: '40%',
+      height: '190px',
+      enterAnimationDuration: '1000ms',
+      exitAnimationDuration: '1000ms',
+      // data: subject,
+    });
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result) {
-  //       subject.nameSubject = result;
-  //       this.subjectService.updateSubject(subject);
-  //     }
-  //   });
-  // }
+    popUp.afterClosed().subscribe((itemSubject) => {
+      if (itemSubject) {
+        this.subjectService.addSubject(itemSubject);
+      }
+    });
+  }
 
-  populateForm(subject: Subject) {}
+  openPopUp(subject: Subject) {
+    const popUp = this.matDialog.open(SubjectDialogFormComponent, {
+      width: '40%',
+      height: '190px',
+      enterAnimationDuration: '1000ms',
+      exitAnimationDuration: '1000ms',
+      // data: subject,
+    });
+
+    popUp.afterClosed().subscribe((itemSubject) => {
+      if (itemSubject) {
+        subject.nameSubject = itemSubject;
+        this.subjectService.updateSubject(subject);
+      }
+    });
+  }
 
   goToSubjectList() {
     this.router.navigate(['/subject']);
