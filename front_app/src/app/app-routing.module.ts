@@ -11,7 +11,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'users',
+    path: 'user',
     loadChildren: () =>
       import('./features/user/user.module').then((m) => m.UserModule),
   },

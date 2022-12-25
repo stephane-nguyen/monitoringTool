@@ -18,6 +18,6 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   goToInformationPage() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/user']);
   }
 }

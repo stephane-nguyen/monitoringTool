@@ -41,7 +41,7 @@ export class UserDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const userId: string | null = this.route.snapshot.paramMap.get('id');
+    const userId: String | null = this.route.snapshot.paramMap.get('id');
     if (userId) {
       this.userService
         .getUserById(+userId)
