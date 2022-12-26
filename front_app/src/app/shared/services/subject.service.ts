@@ -13,14 +13,10 @@ export class SubjectService {
   constructor(private http: HttpClient) {}
 
   apiServerUrl = environment.apiBaseUrl;
-  private _refreshRequired = new RxSubject<void>();
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
-
-  get requiredRefresh() {
-    return this._refreshRequired;
-  }
 
   getSubjectById(subjectId: number): Observable<Subject | undefined> {
     return this.http
@@ -50,18 +46,6 @@ export class SubjectService {
         catchError((error) => this.handleError(error, undefined))
       );
   }
-  addSubject1(subject: Subject): Observable<Subject | undefined> {
-    return this.http
-      .post<Subject>(
-        `${this.apiServerUrl}/api/subject`,
-        subject,
-        this.httpOptions
-      )
-      .pipe(
-        tap((response) => this.log(response)),
-        catchError((error) => this.handleError(error, undefined))
-      );
-  }
 
   updateSubject(subject: Subject): Observable<Subject | undefined> {
     return this.http
@@ -80,6 +64,31 @@ export class SubjectService {
         catchError((error) => this.handleError(error, undefined))
       );
   }
+
+  updateSubject1(form: FormGroup): Observable<Subject | undefined> {
+    return this.http
+      .put(
+        `${this.apiServerUrl}/api/subject`,
+        form.getRawValue(),
+        this.httpOptions
+      )
+      .pipe(
+        tap((response) => this.log(response)),
+        catchError((error) => this.handleError(error, undefined))
+      );
+  }
+  // addSubject1(subject: Subject): Observable<Subject | undefined> {
+  //   return this.http
+  //     .post<Subject>(
+  //       `${this.apiServerUrl}/api/subject`,
+  //       subject,
+  //       this.httpOptions
+  //     )
+  //     .pipe(
+  //       tap((response) => this.log(response)),
+  //       catchError((error) => this.handleError(error, undefined))
+  //     );
+  // }
 
   /* UTILS */
 

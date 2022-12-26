@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>List of Subjects</h2>
-    <button mat-menu-item (click)="openPopUp1()" class="text-primary">
+    <button mat-menu-item (click)="openPopUpAddSubject()" class="text-primary">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -22,7 +22,7 @@
           <td>
             <button
               mat-menu-item
-              (click)="openPopUp(subject)"
+              (click)="openPopUpEditSubject(subject)"
               class="text-primary"
             >
               <mat-icon>edit</mat-icon>
