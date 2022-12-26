@@ -51,8 +51,8 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public ResponseEntity<User> createUser (User s) {
-//		User st = new User("tefdsqfsqst", "tesssfdsqf", "tata@gmail.com", "fdqfdsqfsdq");
-//		return ResponseEntity.ok().body(this.userService.createUser(st));
+		//User st = new User("tefdsqfsqst", "tesssfdsqf", "tata@gmail.com", "fdqfdsqfsdq");
+		//return ResponseEntity.ok().body(this.userService.createUser(st));
 
 		return ResponseEntity.ok().body(this.userService.createUser(s));
 		

@@ -52,12 +52,10 @@ public class SubjectController {
 	
 	@PostMapping("/subject")
 	public ResponseEntity<Subject> createSubject (Subject s) {
-//		Subject st = new Subject("tefdsqfsqst");
-//		return ResponseEntity.ok().body(this.subjectService.createSubject(st));
+		//Subject st = new Subject("tefdsqfsqst");
+		//return ResponseEntity.ok().body(this.subjectService.createSubject(st));
 
 		return ResponseEntity.ok().body(this.subjectService.createSubject(s));
-			
-
 	}
 	
 	@DeleteMapping("/subject/{id}")
