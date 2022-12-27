@@ -1,4 +1,4 @@
 export interface Subject {
-  idSubject: number;
-  nameSubject: String;
+  idSubject: number | null;
+  nameSubject: string | null;
 }

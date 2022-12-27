@@ -34,13 +34,11 @@ export class SubjectService {
     );
   }
 
-  addSubject(form: FormGroup): Observable<Subject | undefined> {
+  addSubject(data: Subject): Observable<Subject | undefined> {
+    console.log(data);
+
     return this.http
-      .post<Subject>(
-        `${this.apiServerUrl}/api/subject`,
-        form.getRawValue(),
-        this.httpOptions
-      )
+      .post<Subject>(`${this.apiServerUrl}/api/subject`, data, this.httpOptions)
       .pipe(
         tap((response) => this.log(response)),
         catchError((error) => this.handleError(error, undefined))
@@ -49,14 +47,18 @@ export class SubjectService {
 
   updateSubject(subject: Subject): Observable<Subject | undefined> {
     return this.http
-      .put(`${this.apiServerUrl}/api/subject`, subject, this.httpOptions)
+      .put(
+        `${this.apiServerUrl}/api/subject/${subject.idSubject}`,
+        subject,
+        this.httpOptions
+      )
       .pipe(
         tap((response) => this.log(response)),
         catchError((error) => this.handleError(error, undefined))
       );
   }
 
-  deleteSubjectById(subjectId: number): Observable<Subject | undefined> {
+  deleteSubjectById(subjectId: number | null): Observable<Subject | undefined> {
     return this.http
       .delete(`${this.apiServerUrl}/api/subject/${subjectId}`)
       .pipe(

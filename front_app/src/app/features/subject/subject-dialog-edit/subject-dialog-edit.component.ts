@@ -1,7 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 
 import { map, tap } from 'rxjs';
 
@@ -14,36 +19,39 @@ import { Subject } from 'src/app/shared/model/subject.model';
   styleUrls: ['./subject-dialog-edit.component.css'],
 })
 export class SubjectDialogEditComponent implements OnInit {
+  reactiveForm: FormGroup;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ref: MatDialogRef<SubjectDialogEditComponent>,
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<SubjectDialogEditComponent>,
     private subjectService: SubjectService
-  ) {}
-
-  retrieveDataFromAddDialogForm: any;
-  private _checkUniqueSubjectName = true;
-  reactiveForm = new FormGroup({
-    subjectName: new FormControl('', Validators.required),
-  });
+  ) {
+    this.reactiveForm = this.formBuilder.group({
+      subjectName: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     // this.retrieveDataFromAddDialogForm = this.data;
   }
 
-  closePopUp() {
-    this.ref.close();
+  updateSubject() {
+    if (this.reactiveForm.valid) {
+      const valueFromInput = this.reactiveForm.get('subjectName')!.value;
+      const subject: Subject = {
+        idSubject: this.data.subject.idSubject,
+        nameSubject: valueFromInput,
+      };
+      this.subjectService.updateSubject(subject).subscribe();
+      this.reactiveForm.reset();
+      this.dialogRef.close();
+      console.log('47 ' + valueFromInput);
+      console.log(subject.nameSubject);
+    }
   }
 
-  updateSubject(subject: Subject) {
-    if (this.reactiveForm.valid) {
-      console.log(this.reactiveForm.getRawValue());
-      if (this._checkUniqueSubjectName) {
-        console.log(
-          '0 subject with the same name, it should use addsubject method'
-        );
-        this.subjectService.updateSubject(subject);
-        this.closePopUp();
-      }
-    }
+  closePopUp() {
+    this.dialogRef.close();
   }
 }

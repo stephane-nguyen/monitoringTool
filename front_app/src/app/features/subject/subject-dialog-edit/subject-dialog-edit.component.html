@@ -1,6 +1,5 @@
 <h2 mat-dialog-title>Edit Subject</h2>
-<form [formGroup]="reactiveForm" (ngSubmit)="closePopUp()">
-  <!-- <form [formGroup]="reactiveForm" (ngSubmit)="updateSubject(subject)"> -->
+<form [formGroup]="reactiveForm" (ngSubmit)="updateSubject()">
   <div mat-dialog-content>
     <mat-form-field>
       <mat-label>Subject name</mat-label>

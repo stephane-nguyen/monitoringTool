@@ -14,7 +14,7 @@ import { SubjectDialogEditComponent } from '../subject-dialog-edit/subject-dialo
 })
 export class SubjectListComponent implements OnInit {
   subjects?: Subject[];
-  subject?: Subject;
+
   constructor(
     private matDialog: MatDialog,
     private subjectService: SubjectService
@@ -36,22 +36,19 @@ export class SubjectListComponent implements OnInit {
       .subscribe(() => this.getSubjects());
   }
 
-  updateSubject(subject: Subject) {}
-
   openPopUpAddSubject() {
     const popUp = this.matDialog.open(SubjectDialogAddComponent, {
       width: '40%',
       height: '190px',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
-      // data: {subject:this.subject},
     });
 
-    popUp.afterClosed().subscribe((itemSubject) => {
-      if (itemSubject) {
-        this.subjectService.addSubject(itemSubject);
-      }
-    });
+    // popUp.afterClosed().subscribe((itemSubject) => {
+    //   if (itemSubject) {
+    //     this.subjectService.addSubject(itemSubject);
+    //   }
+    // });
   }
 
   openPopUpEditSubject(subject: Subject) {
@@ -60,19 +57,8 @@ export class SubjectListComponent implements OnInit {
       height: '190px',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
-      data: { subject: this.subject },
+      data: { subject: subject },
     });
-
-    popUp.afterClosed().subscribe((updatedSubject) => {
-      if (updatedSubject) {
-        subject.nameSubject = updatedSubject;
-        this.subjectService.updateSubject(updatedSubject).subscribe(() => {
-          this.subject = updatedSubject;
-          this.getSubjects();
-        });
-      } else {
-        console.log('bruh');
-      }
-    });
+    popUp.afterClosed().subscribe(() => this.getSubjects());
   }
 }
